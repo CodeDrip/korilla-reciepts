@@ -1,8 +1,17 @@
+
+ body {
+  background: rgb(10, 2, 2);
+  color: rgb(121, 143, 133);
+}
+h1 {
+  margin-bottom: 2px;
+}
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .truck-name {
   text-align: center;
 }
+
