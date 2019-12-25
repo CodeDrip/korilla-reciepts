@@ -47,7 +47,7 @@ let receipts = [
     drink: 'Sparkling Blood Orange Soda',
     cost: 20
   },
-  paid: false
+  paid: true
 }
 ];
 
@@ -59,8 +59,47 @@ let receipts = [
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {receipts}
+    this.state = {receipts: receipts,
+      search: ''}
+    
+      // this.handleChange = this.handleChange.bind(this)
   }
+  
+
+  handleChange(e) {
+    // destructure values from objects
+    // equivalent to doing this:
+    // let value = e.target.value
+    let { value } = e.target
+    let { receipts } = this.state
+
+  
+      // loop over all receipts in state
+      receipts.forEach((receipt, index) => {
+        // covert to lowercase
+        let person = receipt.person.toLowerCase()
+        // if person contains any part of typed string
+        if (person.includes(value)) {
+          // update state of current receipt to show it
+          this.setState((currentState) => {
+            currentState.receipts[index].paid = true
+          })
+        }
+        else {
+          // otherwise hide it
+          this.setState((currentState) => {
+            currentState.receipts[index].paid = false
+          })
+        }
+      })
+      // update search form state
+      this.setState({ search: value })  
+    }
+
+
+
+
+
   render() {
 
     let paidFor = this.state.receipts.filter(function (facts) {
@@ -73,9 +112,7 @@ class App extends Component {
       <div>
       <h1 className="truck-name">Korilla Receipts</h1>
       <div className="container">
-        <Receipts receipt={this.state.receipts[0]} />
-        <Receipts receipt={this.state.receipts[1]} />
-        <Receipts receipt={this.state.receipts[2]} />
+      {this.state.receipts.map((receipt, index) => receipt.paid ? <Receipts key={index} receipt={receipt} /> : '')}
       </div>
       </div>
     )
