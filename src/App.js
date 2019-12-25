@@ -32,7 +32,7 @@ let receipts = [
     drink: 'Korchata',
     cost: 19
   },
-  paid: false
+  paid: true
 },
 {
   person: 'Matt',
@@ -62,7 +62,7 @@ class App extends Component {
     this.state = {receipts: receipts,
       search: ''}
     
-      // this.handleChange = this.handleChange.bind(this)
+      this.handleChange = this.handleChange.bind(this)
   }
   
 
@@ -111,6 +111,15 @@ class App extends Component {
     return (
       <div>
       <h1 className="truck-name">Korilla Receipts</h1>
+      <nav>
+      <input
+          type="text"
+          placeholder="search for a person"
+          name="search"
+          value={this.state.search}
+          onChange={this.handleChange}
+        />
+      </nav>
       <div className="container">
       {this.state.receipts.map((receipt, index) => receipt.paid ? <Receipts key={index} receipt={receipt} /> : '')}
       </div>
