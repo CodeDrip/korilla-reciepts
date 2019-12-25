@@ -3,9 +3,18 @@ import './Receipts.css'
 
 class Receipts extends Component {
     render() {
+        console.log(this.props.receipt.person)
+        // const paidFor = this.props.receipt.paid
+        console.log(this.props)
+        // name = this.props.receipt.person
+        // console.log(this.props.receipt.order.protein)
+        // console.log(this.props.receipt.order.rice)
+        // console.log(this.props.receipt.order.sauce)
+        // console.log(this.props.receipt.order.drink)
+        // console.log(this.props.receipt.order.cost)
         // console.log(this.props.receipt.paid)
-        const paidFor = this.props.receipt.paid
-        console.log(paidFor)
+        
+        // let paidFor = this.props.receipt.filter(facts => facts.cost === false);
         
 
         return (
