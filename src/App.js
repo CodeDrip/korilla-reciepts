@@ -17,7 +17,7 @@ let receipts = [
     drink: 'Korchata',
     cost: 22
   },
-  paid: false
+  paid: true
 },
 {
   person: 'Jerrica',
